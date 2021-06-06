@@ -9,6 +9,7 @@ class Sectionctl < Formula
   depends_on "go" => :build
 
   def install
+    # extract goos and goarch to figure out which platform the machine is on
     goos = `go env GOOS`.strip
     goarch = `go env GOARCH`.strip
     ENV["VERSION"] = "v#{version}"
