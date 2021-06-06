@@ -1,8 +1,7 @@
 class Sectionctl < Formula
   desc "Section Command-line Tools"
-  version "1.11.1"
   homepage "https://github.com/section/sectionctl"
-  url "https://github.com/section/sectionctl/archive/refs/tags/v#{version}.tar.gz"
+  url "https://github.com/section/sectionctl/archive/refs/tags/v1.11.1.tar.gz"
   sha256 "5d3b47ea1b2641aa312e13a8bd282cb3aeb7caa540585e8f600dd621a3b1bfda"
   license "MIT"
 
