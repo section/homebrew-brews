@@ -12,7 +12,7 @@ class Sectionctl < Formula
     goos = `go env GOOS`.strip
     goarch = `go env GOARCH`.strip
     ENV["VERSION"] = "v#{version}"
-    # run make build-release with the goos and goarch extracted from go
+    # run make build-release with the goos and goarch extracted from go 
     system "make", "build-release", "GOOS=#{goos}", "GOARCH=#{goarch}"
     bin.install "dist/sectionctl-v#{version}-#{goos}-#{goarch}/sectionctl"
     prefix.install "dist/sectionctl-v#{version}-#{goos}-#{goarch}/LICENSE"
