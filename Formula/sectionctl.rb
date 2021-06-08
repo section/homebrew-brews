@@ -6,10 +6,9 @@ class Sectionctl < Formula
   license "MIT"
 
   bottle do
-    root_url "https://github.com/section/homebrew-brews/releases/download/sectionctl-1.11.1"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, catalina:     "4584c4ca6c5d16d8ec8c4b21e1b739b99f9a3cd65c2e33f88acd60122b98fce8"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "8458a4a2d15729f8cb2010687d7fdbcd8adb11bd4edc1ad4f5c4b28e908759d9"
+    root_url "https://github.com/section/homebrew-brews/releases/download/sectionctl-1.12.0"
+    sha256 cellar: :any_skip_relocation, catalina:     "cc7f5c4595505d515fbb1e4bcc5ea56a2baf4d19ae98c4f705d02218fe8ea3ce"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "22e8dae4a3458a1f6a22d5f26131e0500100f3808e2ae28b41819389ca6ffc04"
   end
 
   depends_on "go" => :build
