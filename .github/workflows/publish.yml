@@ -4,6 +4,12 @@ on:
     types:
       - labeled
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github }}"
+      - run: echo "${{ github.event }}"
+      - run: echo "${{ github.event.pull_request }}"
   pr-pull:
     if: contains(github.event.pull_request.labels.*.name, 'pr-pull')
     runs-on: ubuntu-latest
