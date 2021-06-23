@@ -7,9 +7,8 @@ on:
       formula:
         description: Formula name
         required: false
-        default: test-formula-git-revision
+        default: sectionctl
 
-  pull_request:
 jobs:
   test-bot:
     strategy:
