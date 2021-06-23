@@ -3,13 +3,14 @@ on:
   pull_request_target:
     types:
       - labeled
+  workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ github }}"
-      - run: echo "${{ github.event }}"
-      - run: echo "${{ github.event.pull_request }}"
+      - run: echo "${{ JSON.stringify(github) }}"
+      - run: echo "${{ JSON.stringify(github.event) }}"
+      - run: echo "${{ JSON.stringify(github.event.pull_request) }}"
   pr-pull:
     if: contains(github.event.pull_request.labels.*.name, 'pr-pull')
     runs-on: ubuntu-latest
