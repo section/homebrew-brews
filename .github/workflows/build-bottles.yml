@@ -1,8 +1,14 @@
-name: brew test-bot
+
+name: Build bottles
+
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      formula:
+        description: Formula name
+        required: false
+        default: test-formula-git-revision
+
   pull_request:
 jobs:
   test-bot:
@@ -14,7 +20,6 @@ jobs:
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@master
-
       - name: Cache Homebrew Bundler RubyGems
         id: cache
         uses: actions/cache@v1
@@ -22,23 +27,17 @@ jobs:
           path: ${{ steps.set-up-homebrew.outputs.gems-path }}
           key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
           restore-keys: ${{ runner.os }}-rubygems-
-
       - name: Install Homebrew Bundler RubyGems
         if: steps.cache.outputs.cache-hit != 'true'
         run: brew install-bundler-gems
-
       - run: brew test-bot --only-cleanup-before
-
       - run: brew test-bot --only-setup
-
       - run: brew test-bot --only-tap-syntax
-
-      - run: brew test-bot --only-formulae
+      - run: brew test-bot --only-formulae ${{github.event.inputs.formula}}
         if: github.event_name == 'pull_request'
-
-      - name: Upload bottles as artifact
-        if: always() && github.event_name == 'pull_request'
-        uses: actions/upload-artifact@main
+      - name: Upload bottles
+        if: always()
+        uses: actions/upload-artifact@v2
         with:
           name: bottles
           path: '*.bottle.*'
